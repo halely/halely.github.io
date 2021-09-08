@@ -17,7 +17,7 @@ tags:
 
 `webpack 官网[4]` 图：  
 
-![webpack](http://image.mamicode.com/info/201805/20180516214614148087.png "webpack")
+![webpack](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/37260bf448aa476cac4eb547ab5678db~tplv-k3u1fbpfcp-watermark.awebp "webpack")
 
 在图中我们可以看到，__webpack__ 将左侧错综复杂的各自不同类型文件的模板依赖关系，包括 .js、.hbs、.cjs、.sass、.jpg、.png 等类型文件，打包成 .js、.css、.jpg、.png 4 种类型的静态资源。
 
@@ -83,7 +83,7 @@ __webpack__ 社区庞大，更新速度快，轮子丰富；
 
 依赖图指的就是文件和文件直接的依赖关系，如上文引入过的图：
 
-![webpack](http://image.mamicode.com/info/201805/20180516214614148087.png "webpack")
+![webpack](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/37260bf448aa476cac4eb547ab5678db~tplv-k3u1fbpfcp-watermark.awebp "webpack")
 
 __webpack__ 通过依赖关系图可以获取非代码资源，如 images 或 web 字体等。并会把它们作为 依赖 提供给应用程序。
 
