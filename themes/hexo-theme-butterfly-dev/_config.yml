@@ -87,7 +87,7 @@ favicon: /img/favicon.png
 # Avatar (頭像)
 avatar:
   #img: https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png
-  img:  https://img2.baidu.com/it/u=50143966,2502567103&fm=26&fmt=auto&gp=0.jpg
+  img:  https://avatars.githubusercontent.com/u/42370141?s=400&u=eeedb3b18b7d9bee2cd66ad497e43949aecafdbb&v=4
   effect: true
 
 # Disable all banner image
