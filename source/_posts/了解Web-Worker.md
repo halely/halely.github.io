@@ -1,12 +1,13 @@
 ---
 title: 了解Web Worker
 date: 2023-02-10 14:21:38
+cover: 'https://w.wallhaven.cc/full/kx/wallhaven-kx36mq.png'
 copyright_author: BEFE团队
 copyright_author_href: https://juejin.cn/user/976828486917245
 copyright_url: https://juejin.cn/post/7139718200177983524#comment
 copyright_info: 本文章来自稀土掘金
 tags:
-  - js
+  - JavaScript
 ---
 
 # 前言
