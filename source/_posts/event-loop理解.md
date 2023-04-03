@@ -3,7 +3,7 @@ title: event loop理解
 date: 2022-12-15 14:32:57
 cover: 'https://w.wallhaven.cc/full/p9/wallhaven-p9op59.jpg'
 tags:
- - javascript
+ - JavaScript
 ---
 
 # 前言

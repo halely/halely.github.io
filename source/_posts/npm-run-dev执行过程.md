@@ -1,7 +1,10 @@
 ---
 title: npm run dev执行过程
 date: 2023-03-10 16:04:23
+cover: 'https://www.foodiesfeed.com/wp-content/uploads/2015/05/girl-holding-coffee-espresso.jpg'
 tags:
+ - npm
+ - node
 ---
 
 

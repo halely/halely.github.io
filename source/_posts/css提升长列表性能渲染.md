@@ -2,10 +2,9 @@
 title: css提升长列表性能渲染
 date: 2021-09-14 15:37:36
 tags:
-    - css
-    - html
-cover: "https://images.pexels.com/photos/1591061/pexels-photo-1591061.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
-top_img: "https://images.pexels.com/photos/747964/pexels-photo-747964.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
+    - CSS
+    - HTML
+cover: "https://www.foodiesfeed.com/wp-content/uploads/2023/03/jelly-beans-all-over-the-table.jpg"
 ---
 
 # 前言

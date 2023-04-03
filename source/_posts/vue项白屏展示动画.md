@@ -3,7 +3,7 @@ title: vue项白屏展示动画
 date: 2022-02-21 17:33:20
 cover: 'https://w.wallhaven.cc/full/y8/wallhaven-y8622k.jpg'
 tags:
-- vue
+- Vue
 ---
 
 # 前言

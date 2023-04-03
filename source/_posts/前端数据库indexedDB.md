@@ -1,8 +1,9 @@
 ---
 title: 前端数据库indexedDB
 date: 2022-02-01 16:01:59
+cover: 'https://www.foodiesfeed.com/wp-content/uploads/2023/03/donut-with-colorful-space-icing.jpg'
 tags:
- - javaScript
+ - JavaScript
 ---
 
 # 前言
