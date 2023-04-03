@@ -9,6 +9,10 @@
       link: https://butterfly.js.org/
       avatar: https://d33wubrfki0l68.cloudfront.net/6657ba50e702d84afb32fe846bed54fba1a77add/827ae/logo.svg
       descr: 学习butterfly布局的网站
+    - name: Butterfly主题美化教程
+      link: https://butterfly.zhheo.com/docs/home.html
+      avatar: https://d33wubrfki0l68.cloudfront.net/6657ba50e702d84afb32fe846bed54fba1a77add/827ae/logo.svg
+      descr: 这个网站是通过一些基础的教程可以让你入门Butterfly魔改，也就是定制你自己的Butterfly主题
 
 - class_name: 网站
   class_desc: 值得推荐的网站
