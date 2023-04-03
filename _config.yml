@@ -105,7 +105,12 @@ deploy:
   type: git
   repo: git@github.com:halely/halely.github.io.git
   branch: master
-  
+
+## aplayer
+aplayer:
+  meting: true
+  asset_inject: false
+
 ## live2d
 live2d:
     enable: true
