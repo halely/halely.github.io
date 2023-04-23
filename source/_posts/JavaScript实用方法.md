@@ -149,4 +149,12 @@ document.designMode = 'on';//怎么说呢，就是页面直接编辑
 5 >> 1 ; //2
 
 ```
+
 可以用在二分法查找方面
+
+## 10.生成固定长度的空数组
+
+```js
+let list = ref(Array.apply(null, { length: 81 } as number[]))
+// [undefined, undefined,...,undefined] length=81
+```
