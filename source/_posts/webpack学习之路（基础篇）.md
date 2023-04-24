@@ -4,7 +4,7 @@ date: 2021-09-08 11:58:14
 cover: "https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/1a8fc25be9ba4f3a95afe77dc3b58e9e~tplv-k3u1fbpfcp-zoom-crop-mark:1304:1304:1304:734.awebp"
 tags: 
   - webpack 
-  - Javascript
+  - JavaScript
 ---
 
 # 前言

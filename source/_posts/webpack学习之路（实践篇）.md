@@ -5,7 +5,7 @@ cover: "https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/50367734df44434a95962e
 top_img: "http://p4.qhimg.com/bdm/0_0_100/t0106607989b87d4e2c.jpg"
 tags: 
   - webpack 
-  - Javascript
+  - JavaScript
 ---
 
 # 前言

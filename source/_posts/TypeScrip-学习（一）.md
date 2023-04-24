@@ -3,7 +3,8 @@ title: TypeScrip 学习（一）
 cover: 'https://www.foodiesfeed.com/wp-content/uploads/2023/04/green-spring-salad-with-a-turquoise-background.jpg'
 date: 2023-04-20 16:05:32
 tags:
-  - typeScript
+  - JavaScript
+  - TypeScript
 ---
 
 # 前言
