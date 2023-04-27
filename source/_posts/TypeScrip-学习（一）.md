@@ -50,18 +50,17 @@ tsc -v
 
 ### **字符串类型**
 
-    ```js
-    //字符串是使用string定义的
-    let a: string = 'hale'
-    //普通声明
-
-    //也可以使用es6的字符串模板
-    let str: string = `ly${a}`
-    ```
+```ts
+//字符串是使用string定义的
+let a: string = 'hale'
+//普通声明
+//也可以使用es6的字符串模板
+let str: string = `ly${a}`
+```
 
 ### **数字类型**
 
-```js
+```ts
 let notANumber: number = NaN;//Nan
 let num: number = 123;//普通数字
 let infinityNumber: number = Infinity;//无穷大
@@ -74,7 +73,7 @@ let octal: number = 0o744;//八进制s
 
 ### **布尔类型**
 
-```js
+```ts
 let booleand: boolean = true //可以直接使用布尔值
 
 //注意 使用构造函数 Boolean 创造的对象不是布尔值：
@@ -90,7 +89,7 @@ let createdBoolean2: boolean = Boolean(1)
 
 `JavaScript` 没有空值（Void）的概念，在 `TypeScript` 中，可以用 `void` 表示没有任何返回值的函数
 
-```js
+```ts
 function voidFn(): void {
     console.log('test void')
 }
@@ -101,14 +100,14 @@ function voidFn(): void {
 
 ### **Null和undefined类型**
 
-```js
+```ts
 let u: undefined = undefined;//定义undefined
 let n: null = null;//定义null
 ```
 
 >void 和 undefined 和 null 最大的区别:undefined 和 null 是所有类型的子类型。也就是说 undefined 类型的变量，可以赋值给 string 类型的变量：
 
-```js
+```ts
     //非严格模式
 let u: undefined = undefined;//定义undefined
 let n: null = null;//定义null
@@ -142,7 +141,7 @@ str=v; // TODO 不支持
 - `{}`
     看起来很别扭的一个东西 你可以把他理解成new Object 就和我们的上面Object基本一样 包含所有类型
 
-    ```js
+    ```ts
     let a1: {} = {name:'hale'} //正确
     let a2: {} =  () => 123//正确
     let a3: {} = 123//正确
@@ -152,7 +151,7 @@ str=v; // TODO 不支持
 
     代表所有非值类型的类型，例如 数组 对象 函数等，常用于泛型约束
 
-    ```js
+    ```ts
     let a1: {} = {name:1} //正确
     let a2: {} =  () => 123//正确
     let a3: {} = 123//正确
@@ -194,7 +193,7 @@ str=v; // TODO 不支持
 
 ### **数组类型**
 
-```js
+```ts
 // 类型数组
     let arr1:number[] = [1,2,3]// 数组中不能存在非number类型
     //如果是混合数组
@@ -206,17 +205,39 @@ str=v; // TODO 不支持
     id:string,
     num:number
     }
-let arr4:ObjArray[] = [{id:'1',num:12}]
-//多维数组
+    let arr4:ObjArray[] = [{id:'1',num:12}]
+    //多维数组
     let arr5:number[][] = [[1,2], [3,4]];
     let arr6:Array<Array<number>> = [1,2,3,4,5]
 ```
+
+### **元组 Tuple**
+
+>元组就是数组的变种
+ 元组（Tuple）是固定数量的不同类型的元素的组合
+
+ ```ts
+ //元组与集合的不同之处在于，元组中的元素类型可以是不同的，而且数量固定
+let arr:[number,string] = [1,'hale']
+//设置只读
+let arr2: readonly [number,boolean,string,undefined] = [1,true,'hale',undefined]
+//设置可选
+let a:[x:number,y?:boolean] = [1]
+ ```
+
+ 应用场景，前端导出excel文件的时候，后端返回数据
+
+ ```ts
+ let excel: [string, string, string, number][] = [
+   ['title', 'name', 'man', 1]
+]
+ ```
 
 ### **函数类型**
 
 **基本函数类型**
 
-```js
+```ts
 //注意，参数不能多传，也不能少传 必须按照约定的类型来
 const fn1 = (name: string, age:number): string => {
     return name + age
@@ -252,7 +273,7 @@ function getUserInfo(user: User): User {
 
 **扩展函数类型**
 
-```js
+```ts
 //函数this类型
 interface User {
     user: number[],

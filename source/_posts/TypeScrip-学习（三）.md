@@ -142,3 +142,103 @@ abstract class A {
  let b = new B();
  console.log(b.getName());
 ```
+
+## Vue虚拟DMO
+
+```ts
+//设置入参类型
+interface VueOption {
+   el: string | HTMLElement
+}
+interface VNode {
+   tag: string | HTMLElement,
+   text?: string,
+   props?: {
+      readonly id: string | number,
+      key: number | string | object
+   },
+   children?: VNode[]
+}
+//设置class类型
+interface VueCls {
+   option: VueOption,
+   init: () => void
+}
+class SetDom {
+   constructor() { }
+   protected createElement(el: string | HTMLElement): HTMLElement {
+      return typeof el === 'string' ? document.createElement(el) : el
+   }
+   protected setText(el: HTMLElement, text: string | null) {
+      el.textContent = text;
+   }
+   setProps(el: HTMLElement, props: object | null) {
+      console.log(props)
+      if (props) {
+         Object.entries(props).forEach(item => {
+            el.setAttribute(item[0], item[1]);
+         })
+         console.log(el)
+      }
+   }
+   public render(createElement: VNode): HTMLElement {
+      const el = this.createElement(createElement.tag)
+      this.setProps(el, createElement.props ?? null)//设置属性
+      this.setText(el, createElement.text ?? null)//设置值
+      if (createElement?.children && Array.isArray(createElement?.children)) {
+         createElement.children.forEach(item => {
+            const childNode = this.render(item);
+            this.setText(childNode, item.text ?? null)//设置值
+            el.appendChild(childNode)
+         })
+
+      } 
+      return el;
+   }
+}
+class Vue extends SetDom implements VueCls {
+   option: VueOption
+   constructor(option: VueOption) {
+      super();
+      this.option = option;
+      this.init()
+   }
+   public init() {
+      let app = typeof this.option.el == 'string' ? document.querySelector(this.option.el) : this.option.el;
+      let VData: VNode = {
+         tag: "div",
+         props: {
+            id: 1,
+            key: 1
+         },
+         children: [
+            {
+               tag: "div",
+               text: "子集1",
+            },
+            {
+               tag: "div",
+               text: "子集2"
+            }
+         ]
+
+      }
+      app?.appendChild(this.render(VData))
+      this.mount(app as Element)
+   }
+   public mount(app: Element) {
+      document.body.append(app)
+   }
+
+   //静态函数
+   static version() {
+      return '1.0.0'
+   }
+
+}
+const v = new Vue({
+   el: '#app'
+})
+console.log(Vue.version())
+
+```
