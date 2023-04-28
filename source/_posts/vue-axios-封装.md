@@ -33,7 +33,7 @@ const service = axios.create({
 service.interceptors.request.use(
     config => {
         // 是否不需要设置 token
-        const isNoToken = (config.headers || {}).isToken === false
+        const isNoToken: boolean = ((config.headers || {}) as any).isToken === false
         // 配置请求头
         if (!isNoToken) {
             // 让每个请求携带自定义token 
@@ -55,7 +55,7 @@ service.interceptors.response.use(
             return response.data
         }
         //其他状态自行判断
-        return response;
+        return response.data;
     },
     error => {
         const { response } = error;
@@ -70,20 +70,22 @@ service.interceptors.response.use(
     }
 );
 // 封装 GET POST 请求并导出
-export function request(url:string = '', type:string = 'POST', params:any = {}) {
+export function request(url:string = '', type:string = 'POST', params:any = {},headers: any={}) {
     //设置 url params type 的默认值
     return new Promise((resolve, reject) => {
         let promise
         if (type.toUpperCase() === 'GET') {
             promise = service({
                 url,
-                params
+                params,
+                headers
             })
         } else if (type.toUpperCase() === 'POST') {
             promise = service({
                 method: 'POST',
                 url,
-                data: params
+                data: params,
+                headers
             })
         }
         //处理返回

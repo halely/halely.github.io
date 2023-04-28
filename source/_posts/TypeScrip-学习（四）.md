@@ -1,7 +1,10 @@
 ---
 title: TypeScrip-学习（四）
 date: 2023-04-26 16:37:00
+cover: https://www.foodiesfeed.com/wp-content/uploads/2023/04/female-farmer-holding-sign-board.jpg
 tags:
+  - JavaScript
+  - TypeScript
 ---
 
 # 枚举
