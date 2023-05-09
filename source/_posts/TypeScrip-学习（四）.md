@@ -154,3 +154,133 @@ const s2 = Symbol(1)
 ```
 
 >一般来说`Symbol`是创建唯一值，但是可以调用`for`来创建`Symbol`,`console.log(Symbol.for('key')==Symbol.for('key'))`为`true`，因为for是查找`Symbol`有没有注册对应的`key`值(**key为string类型**)，如果有就返回，如果没有就创建，故是相同的
+
+**使用symbol定义的属性，是不能通过如下方式遍历拿到的**
+
+```ts
+const symbol1 = Symbol('hale')
+const symbol2 = Symbol('ton')
+const obj= {
+   [symbol1]: 'hale',
+   [symbol2]: 'ton',
+   age: 27,
+   sex: 'man'
+}
+// 1 for in 遍历
+for (const key in obj) {
+   console.log(key);//// 注意在console看key,是不是没有遍历到symbol1
+}
+// 2 Object.keys 遍历
+console.log(Object.keys(obj))
+// 3 getOwnPropertyNames
+console.log(Object.getOwnPropertyNames(obj))
+// 4 JSON.stringify 克隆是无法克隆symbol的数据的
+console.log(JSON.stringify(obj))
+
+/* 获取方式 */
+// 1 拿到具体的symbol 属性,对象中有几个就会拿到几个
+console.log(Object.getOwnPropertySymbols(obj))
+// 2 es6 的 Reflect 拿到对象的所有属性
+console.log(Reflect.ownKeys(obj))
+```
+
+**Symbol.iterator 迭代器 和 生成器 for of**
+
+在es6中有`iterator`(迭代器)概念，遍历大部分类型迭代器 `arr` `nodeList` `函数的 arguments 对象` `set` `map` 等
+
+```ts
+var arr:number[] = [1,2,3,4];
+let iterator = arr[Symbol.iterator]();
+ 
+console.log(iterator.next());  //{ value: 1, done: false }
+console.log(iterator.next());  //{ value: 2, done: false }
+console.log(iterator.next());  //{ value: 3, done: false }
+console.log(iterator.next());  //{ value: 4, done: false }
+console.log(iterator.next());  //{ value: undefined, done: true }
+```
+
+`ES6` 规定，默认的 `Iterator` 接口部署在数据结构的`Symbol.iterator`属性，或者说，一个数据结构只要具有`Symbol.iterator`属性，就可以认为是**可遍历的**
+象 **（Object）** 之所以没有默认部署 Iterator 接口，是因为对象的哪个属性先遍历，哪个属性后遍历是不确定的，需要开发者手动指定。本质上，遍历器是一种线性处理，对于任何非线性的数据结构，部署遍历器接口，就等于部署一种线性转换。不过，严格地说，对象部署遍历器接口并不是很必要，因为这时对象实际上被当作 `Map 结构使用，ES5` 没有 `Map` 结构，而 `ES6` 原生提供了。下面是es6对应的知识点:
+
+1. **生成器**
+
+    ```ts
+    function* getApp() {
+        yield 'hale'
+        yield '24'
+        yield Promise.resolve('你好')
+        yield 'man'
+    }
+    let app = getApp()
+    console.log(app.next())
+    console.log(app.next())
+    console.log(app.next())
+    console.log(app.next())
+    console.log(app.next())
+    ```
+
+2. **迭代器利用**
+
+    ```ts
+    let map: Map<any, any> = new Map();
+    map.set([1, 2, 3], 'hale')
+    let set = new Set([1, 2, 2, 1, 4, 3, 5, 4])
+    let arr = [1, 2, 3, 1, 2, 3]
+    let each = (value: any) => {
+        let It: any = value[Symbol.iterator]()
+        let next: any = { done: false }
+        while (!next.done) {
+            next = It.next();
+            if (!next.done) console.log(next.value)
+        }
+    }
+    each(map)
+    each(arr)
+    each(set)
+    ```
+
+3. **`for of` 就是迭代器的语法糖，就是上面内置的`each`方法**
+
+   ```ts
+    let map: Map<any, any> = new Map();
+    map.set([1, 2, 3], 'hale')
+    let set = new Set([1, 2, 2, 1, 4, 3, 5, 4])
+    let arr = [1, 2, 3, 1, 2, 3]
+    for(let value of set){
+        console.log(value)
+    }
+   ```
+
+4. **数组的解构**
+
+    数组的解构或者`[...]`利用的就是迭代器，如果需要数组方法解构对象，可以自己封装
+
+    ```ts
+    let obj = {
+        currentIndex: 0,
+        maxIndex: 5,
+        [Symbol.iterator]() {
+            return {
+                currentIndex: this.currentIndex,
+                maxIndex: this.maxIndex,
+                next() {
+                    if (this.maxIndex == this.currentIndex) {
+                        return {
+                            value: undefined,
+                            done: true,
+                        }
+                    } else {
+                        return {
+                            value: this.currentIndex++,
+                            done: false,
+                        }
+                    }
+                }
+            }
+        }
+    }
+    let ad=[...obj]
+    console.log(ad) //[ 0, 1, 2, 3, 4 ]
+    ```
+
+    >注意这是数组的解构原理，对应的解构有自己的原理

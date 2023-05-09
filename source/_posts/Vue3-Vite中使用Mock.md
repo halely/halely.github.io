@@ -1,6 +1,6 @@
 ---
 title: Vue3+Vite中使用Mock
-date: 2023-04-28 17:01:41
+date: 2023-02-28 17:01:41
 cover: https://www.foodiesfeed.com/wp-content/uploads/2021/05/meal-wheel.jpg
 tags:
   - vite
@@ -14,6 +14,8 @@ tags:
 [vite-plugin-mock](https://github.com/vbenjs/vite-plugin-mock/blob/main/README.zh_CN.md)
 
 # 开始
+
+>**注意**:当前是3.0.0版本，目前发现修改mock文件会生成很多个xxx.mjs文件,控制台不停报错，[issue](https://github.com/vbenjs/vite-plugin-mock/issues/98),关注是否已经解决
 
 ## 安装 (yarn or npm)
 
@@ -239,3 +241,5 @@ http-server
 此时，在命令行中会输出生成的服务网站
 
 >注意。默认网址端口号是8080，如果已经被占用可使用 `​​​​​​​http-server -p 8081` 来修改端口
+
+
