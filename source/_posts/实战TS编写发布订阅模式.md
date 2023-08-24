@@ -2,6 +2,7 @@
 title: 实战TS编写发布订阅模式
 date: 2023-08-23 15:12:55
 cover: https://www.foodiesfeed.com/wp-content/uploads/2023/08/shrimps-pad-thai.jpg
+tags:
   - JavaScript
   - TypeScript
 ---
