@@ -1,7 +1,7 @@
 ---
 title: vite常用配置
 date: 2023-02-28 10:23:56
-cover: 'https://w.wallhaven.cc/full/9d/wallhaven-9ddqjw.png'
+cover: '/img/background/backdrop1.png'
 tags:
   - vite
 ---

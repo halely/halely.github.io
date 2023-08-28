@@ -1,7 +1,7 @@
 ---
 title: webpack学习之路（基础篇）
 date: 2021-09-08 11:58:14
-cover: "https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/1a8fc25be9ba4f3a95afe77dc3b58e9e~tplv-k3u1fbpfcp-zoom-crop-mark:1304:1304:1304:734.awebp"
+cover: /img/webpackBG.png
 tags: 
   - webpack 
   - JavaScript
@@ -20,7 +20,7 @@ tags:
 
 `webpack 官网[4]` 图：  
 
-![webpack](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/37260bf448aa476cac4eb547ab5678db~tplv-k3u1fbpfcp-watermark.awebp "webpack")
+![webpack](/img/postImg/webpack4.png)
 
 在图中我们可以看到，__webpack__ 将左侧错综复杂的各自不同类型文件的模板依赖关系，包括 .js、.hbs、.cjs、.sass、.jpg、.png 等类型文件，打包成 .js、.css、.jpg、.png 4 种类型的静态资源。
 
@@ -86,7 +86,7 @@ __webpack__ 社区庞大，更新速度快，轮子丰富；
 
 依赖图指的就是文件和文件直接的依赖关系，如上文引入过的图：
 
-![webpack](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/37260bf448aa476cac4eb547ab5678db~tplv-k3u1fbpfcp-watermark.awebp "webpack")
+![webpack](/img/postImg/webpack4.png)
 
 __webpack__ 通过依赖关系图可以获取非代码资源，如 images 或 web 字体等。并会把它们作为 依赖 提供给应用程序。
 
@@ -105,7 +105,7 @@ module.exports = {
 };
 ```
 
-![webpack](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/a3885adf8b7c4e94835b0136d1a10078~tplv-k3u1fbpfcp-watermark.awebp "webpack")
+![webpack](/img/postImg/webpack3.png)
 
 ## 3. output（输出）
 
@@ -122,7 +122,7 @@ module.exports = {
 };
 ```
 
-![webpack](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/61e2d941a8b643d1af3dc20ac3d12772~tplv-k3u1fbpfcp-watermark.awebp "webpack")
+![webpack](/img/postImg/webpack2.png)
 
 ## 4. loader
 
@@ -142,7 +142,7 @@ module.exports = {
 };
 ```
 
-![webpack](https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/a63a18b93beb49cc80842a1ebf79ed08~tplv-k3u1fbpfcp-watermark.awebp "webpack")
+![webpack](/img/postImg/webpack1.png)
 
 ## 5. plugin（插件）
 

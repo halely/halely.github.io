@@ -1,8 +1,7 @@
 ---
 title: webpack学习之路（实践篇）
 date: 2021-09-13 16:59:00
-cover: "https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/50367734df44434a95962eceeb4e70a6~tplv-k3u1fbpfcp-zoom-crop-mark:1304:1304:1304:734.awebp"
-top_img: "http://p4.qhimg.com/bdm/0_0_100/t0106607989b87d4e2c.jpg"
+cover: /img/webpackBG.png
 tags: 
   - webpack 
   - JavaScript
