@@ -1,7 +1,7 @@
 ---
 title: TS进阶用法proxy & Reflect
 date: 2023-08-24 10:46:10
-cover: '../img/still.jpg'
+cover: '/img/still.jpg'
 tags:
   - JavaScript
   - TypeScript
