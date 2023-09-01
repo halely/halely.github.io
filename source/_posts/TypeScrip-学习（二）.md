@@ -24,7 +24,7 @@ let myPhone: number | string  = true
 //函数使用联合类型
 const fn = (something:number | boolean):boolean => {
      return !!something
-
+}
 ```
 
 ## 交叉类型
