@@ -1,0 +1,370 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>Rollup构建TS项目 &amp; webpack构建TS项目 &amp; esbuild + swc | 不练剑的温不胜</title><meta name="keywords" content="JavaScript,TypeScript,webPack,Rollup"><meta name="author" content="haleLy"><meta name="copyright" content="haleLy"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="Rollup构建TS项目Rollup 打包很快,体积很小，学习一下 配置环境  npm init -y 生成 package.json tsc --init 生成 tsconfig.json 创建 rollup.config.js 创建入口问题&#x2F;src&#x2F;index.ts文件和public&#x2F;index.html文件  安装依赖  全局安装rollup npm install rollup-g 安装T">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Rollup构建TS项目 &amp; webpack构建TS项目 &amp; esbuild + swc">
+<meta property="og:url" content="https://halely.github.io/2023/06/06/Rollup%E6%9E%84%E5%BB%BATS%E9%A1%B9%E7%9B%AE-webpack%E6%9E%84%E5%BB%BATS%E9%A1%B9%E7%9B%AE-esbuild-swc/index.html">
+<meta property="og:site_name" content="不练剑的温不胜">
+<meta property="og:description" content="Rollup构建TS项目Rollup 打包很快,体积很小，学习一下 配置环境  npm init -y 生成 package.json tsc --init 生成 tsconfig.json 创建 rollup.config.js 创建入口问题&#x2F;src&#x2F;index.ts文件和public&#x2F;index.html文件  安装依赖  全局安装rollup npm install rollup-g 安装T">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://www.foodiesfeed.com/wp-content/uploads/2023/08/salmon-appetizers.jpg">
+<meta property="article:published_time" content="2023-06-06T07:32:12.000Z">
+<meta property="article:modified_time" content="2023-08-22T10:06:21.576Z">
+<meta property="article:author" content="haleLy">
+<meta property="article:tag" content="JavaScript">
+<meta property="article:tag" content="TypeScript">
+<meta property="article:tag" content="webPack">
+<meta property="article:tag" content="Rollup">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://www.foodiesfeed.com/wp-content/uploads/2023/08/salmon-appetizers.jpg"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://halely.github.io/2023/06/06/Rollup%E6%9E%84%E5%BB%BATS%E9%A1%B9%E7%9B%AE-webpack%E6%9E%84%E5%BB%BATS%E9%A1%B9%E7%9B%AE-esbuild-swc/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"你已切换为繁体","cht_to_chs":"你已切换为简体","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#49b1f5","bgDark":"#121212","position":"bottom-left"},
+  source: {
+    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js',
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+    },
+    fancybox: {
+      js: 'https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.js',
+      css: 'https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isanchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Rollup构建TS项目 & webpack构建TS项目 & esbuild + swc',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2023-08-22 18:06:21'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if (GLOBAL_CONFIG_SITE.isHome && /iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    document.addEventListener('pjax:complete', detectApple)})(window)</script><meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="不练剑的温不胜" type="application/atom+xml">
+</head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="/./img/avatar.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data is-center"><div class="data-item"><a href="/archives/"><div class="headline">文章</div><div class="length-num">44</div></a></div><div class="data-item"><a href="/tags/"><div class="headline">标签</div><div class="length-num">15</div></a></div><div class="data-item"><a href="/categories/"><div class="headline">分类</div><div class="length-num">1</div></a></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fa fa-heartbeat"></i><span> 清单</span><i class="fas fa-chevron-down expand hide"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/Gallery/"><i class="fa-fw fas fa-images"></i><span> 照片</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://www.foodiesfeed.com/wp-content/uploads/2023/08/salmon-appetizers.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">不练剑的温不胜</a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fa fa-heartbeat"></i><span> 清单</span><i class="fas fa-chevron-down expand hide"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/Gallery/"><i class="fa-fw fas fa-images"></i><span> 照片</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">Rollup构建TS项目 &amp; webpack构建TS项目 &amp; esbuild + swc</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-06-06T07:32:12.000Z" title="发表于 2023-06-06 15:32:12">2023-06-06</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-08-22T10:06:21.576Z" title="更新于 2023-08-22 18:06:21">2023-08-22</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="Rollup构建TS项目 &amp; webpack构建TS项目 &amp; esbuild + swc"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="Rollup构建TS项目"><a href="#Rollup构建TS项目" class="headerlink" title="Rollup构建TS项目"></a>Rollup构建TS项目</h1><p><a target="_blank" rel="noopener" href="https://so.csdn.net/so/search?q=Rollup">Rollup</a> 打包很快,体积很小，学习一下</p>
+<p><strong>配置环境</strong></p>
+<ol>
+<li><code>npm init -y</code> 生成 <code>package.json</code></li>
+<li><code>tsc --init</code> 生成 <code>tsconfig.json</code></li>
+<li>创建 <code>rollup.config.js</code></li>
+<li>创建入口问题<code>/src/index.ts</code>文件和<code>public/index.html</code>文件</li>
+</ol>
+<p><strong>安装依赖</strong></p>
+<ol>
+<li>全局安装rollup <code>npm install rollup-g</code></li>
+<li>安装TypeScript   <code>npm install typescript -D</code></li>
+<li>安装TypeScript 转换器 <code>npm install rollup-plugin-typescript2 -D</code></li>
+<li>安装代码压缩插件<code>npm install rollup-plugin-terser -D</code></li>
+<li>安装rollupWeb服务 <code>npm install rollup-plugin-serve -D</code></li>
+<li>安装热更新 <code>npm install rollup-plugin-livereload -D</code></li>
+<li>引入外部依赖 <code>npm install rollup-plugin-node-resolve -D</code></li>
+<li>安装配置环境变量用来区分本地和生产  <code>npm install cross-env -D</code></li>
+<li>替换环境变量给浏览器使用 <code>npm install rollup-plugin-replace -D</code></li>
+</ol>
+<p><strong>配置文件</strong></p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// package.json</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="attr">&quot;name&quot;</span>: <span class="string">&quot;rollupTs&quot;</span>,</span><br><span class="line">  <span class="attr">&quot;version&quot;</span>: <span class="string">&quot;1.0.0&quot;</span>,</span><br><span class="line">  <span class="attr">&quot;description&quot;</span>: <span class="string">&quot;&quot;</span>,</span><br><span class="line">  <span class="attr">&quot;main&quot;</span>: <span class="string">&quot;index.js&quot;</span>,</span><br><span class="line">  <span class="attr">&quot;scripts&quot;</span>: &#123;</span><br><span class="line">    <span class="attr">&quot;test&quot;</span>: <span class="string">&quot;echo \&quot;Error: no test specified\&quot; &amp;&amp; exit 1&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;dev&quot;</span>: <span class="string">&quot;cross-env NODE_ENV=development rollup -c -w&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;build&quot;</span>: <span class="string">&quot;cross-env NODE_ENV=produaction rollup -c&quot;</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">&quot;type&quot;</span>: <span class="string">&quot;module&quot;</span>,</span><br><span class="line">  <span class="attr">&quot;keywords&quot;</span>: [],</span><br><span class="line">  <span class="attr">&quot;author&quot;</span>: <span class="string">&quot;&quot;</span>,</span><br><span class="line">  <span class="attr">&quot;license&quot;</span>: <span class="string">&quot;ISC&quot;</span>,</span><br><span class="line">  <span class="attr">&quot;devDependencies&quot;</span>: &#123;</span><br><span class="line">    <span class="attr">&quot;cross-env&quot;</span>: <span class="string">&quot;^7.0.3&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;rollup-plugin-livereload&quot;</span>: <span class="string">&quot;^2.0.5&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;rollup-plugin-node-resolve&quot;</span>: <span class="string">&quot;^5.2.0&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;rollup-plugin-replace&quot;</span>: <span class="string">&quot;^2.2.0&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;rollup-plugin-serve&quot;</span>: <span class="string">&quot;^1.1.0&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;rollup-plugin-terser&quot;</span>: <span class="string">&quot;^7.0.2&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;rollup-plugin-typescript2&quot;</span>: <span class="string">&quot;^0.31.1&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;typescript&quot;</span>: <span class="string">&quot;^4.5.5&quot;</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p><code>rollup -c</code>:打包命令<br><code>rollup -c -w</code>:启动本地服务命令<br><code>cross-env NODE_ENV=development</code>:配置<strong>node</strong> <code>process.env</code>环境变量用来区分本地和生产，注意，这在浏览器中不能直接获取的，需要插件<code>replace</code>配置</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//rollup.config.js</span></span><br><span class="line"><span class="keyword">import</span> path <span class="keyword">from</span> <span class="string">&#x27;path&#x27;</span></span><br><span class="line"><span class="keyword">import</span> ts <span class="keyword">from</span> <span class="string">&#x27;rollup-plugin-typescript2&#x27;</span><span class="comment">//识别入口ts文件</span></span><br><span class="line"><span class="keyword">import</span> &#123; terser &#125; <span class="keyword">from</span> <span class="string">&#x27;rollup-plugin-terser&#x27;</span><span class="comment">//代码压缩</span></span><br><span class="line"><span class="keyword">import</span> server <span class="keyword">from</span> <span class="string">&#x27;rollup-plugin-serve&#x27;</span><span class="comment">//启动服务</span></span><br><span class="line"><span class="keyword">import</span> livereload <span class="keyword">from</span> <span class="string">&#x27;rollup-plugin-livereload&#x27;</span><span class="comment">//热更新</span></span><br><span class="line"><span class="keyword">import</span> replace <span class="keyword">from</span> <span class="string">&#x27;rollup-plugin-replace&#x27;</span><span class="comment">//注册浏览器参数</span></span><br><span class="line"><span class="keyword">import</span> &#123; fileURLToPath &#125; <span class="keyword">from</span> <span class="string">&#x27;url&#x27;</span></span><br><span class="line"><span class="keyword">const</span> __filenameNew = fileURLToPath(<span class="keyword">import</span>.meta.url)</span><br><span class="line"><span class="keyword">const</span> __dirnameNew = path.dirname(__filenameNew)</span><br><span class="line"><span class="keyword">const</span> isDev = <span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> process.env.NODE_ENV === <span class="string">&#x27;development&#x27;</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span><br><span class="line">    <span class="attr">input</span>: <span class="string">&#x27;./src/index.ts&#x27;</span>,<span class="comment">//入口</span></span><br><span class="line">    <span class="comment">//出口</span></span><br><span class="line">    <span class="attr">output</span>: &#123;</span><br><span class="line">        <span class="comment">//直接使用__dirname 会报错__dirname is not defined in ES module scope，因为rollup需要配置 &quot;type&quot;: &quot;module&quot;,，但是module不支持__dirname，故</span></span><br><span class="line">        <span class="comment">//需要创建__dirnameNew替代</span></span><br><span class="line">        <span class="attr">file</span>: path.resolve(__dirnameNew, <span class="string">&#x27;./lib/index.js&#x27;</span>),</span><br><span class="line">        <span class="attr">format</span>: <span class="string">&#x27;umd&#x27;</span>,<span class="comment">//输出格式</span></span><br><span class="line">        <span class="attr">sourcemap</span>: <span class="literal">true</span>,<span class="comment">//生成sourcemap文件，定位问题，否则定位的代码是打包后的文件</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">plugins</span>: [</span><br><span class="line">        ts(),</span><br><span class="line">        isDev() &amp;&amp; livereload(),<span class="comment">//热更新组件</span></span><br><span class="line">        terser(&#123;</span><br><span class="line">            <span class="attr">compress</span>: &#123;</span><br><span class="line">                <span class="attr">drop_console</span>: !isDev(),<span class="comment">//去除console</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;),<span class="comment">//压缩文件</span></span><br><span class="line">        replace(&#123;</span><br><span class="line">            <span class="string">&#x27;process.env.NODE_ENV&#x27;</span>: <span class="built_in">JSON</span>.stringify(process.env.NODE_ENV)<span class="comment">//因为process是在node环境的下的参数，在浏览器上是访问不了的，所以需要注册到浏览器上</span></span><br><span class="line">        &#125;),</span><br><span class="line">        isDev() &amp;&amp; server(&#123;</span><br><span class="line">            <span class="attr">open</span>: <span class="literal">true</span>,<span class="comment">//是否启动打开页面</span></span><br><span class="line">            <span class="attr">port</span>: <span class="number">1988</span>,<span class="comment">//配置端口号</span></span><br><span class="line">            <span class="attr">openPage</span>: <span class="string">&#x27;/public/index.html&#x27;</span>,<span class="comment">//打开的页面</span></span><br><span class="line">        &#125;),</span><br><span class="line"></span><br><span class="line">    ]</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>js代码使用环境变量</strong></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> label: string = <span class="string">&#x27;hale最喜欢八味&#x27;</span>;</span><br><span class="line"><span class="built_in">console</span>.log(label)</span><br><span class="line"><span class="keyword">if</span> (process.env.NODE_ENV === <span class="string">&#x27;development&#x27;</span>) &#123;</span><br><span class="line">    alert(<span class="string">&#x27;开发&#x27;</span>)</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    alert(<span class="string">&#x27;生产&#x27;</span>)</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(process.env.NODE_ENV)</span><br></pre></td></tr></table></figure>
+
+<p><strong>TS配置需要注意的</strong></p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//tsconfig.json</span></span><br><span class="line">&#123;</span><br><span class="line"><span class="attr">&quot;module&quot;</span>: <span class="string">&quot;ES2015&quot;</span>, <span class="comment">//需要设置ts配置&quot;module&quot;为&quot;ES2015&quot;,CommonJS无法解析识别ts文件插件rollup-plugin-typescript2</span></span><br><span class="line"><span class="attr">&quot;sourceMap&quot;</span>: <span class="literal">true</span>, <span class="comment">//生成sourcemap文件，定位问题，否则定位的代码是打包后的文件        </span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="Webpack构建TS项目"><a href="#Webpack构建TS项目" class="headerlink" title="Webpack构建TS项目"></a>Webpack构建TS项目</h1><p><strong>配置环境</strong></p>
+<ol>
+<li><code>npm init -y</code> 生成 <code>package.json</code></li>
+<li>创建入口问题<code>/src/index.ts</code>文件和<code>public/index.html</code>文件</li>
+<li><code>tsc --init</code> 生成 <code>tsconfig.json</code></li>
+<li>创建 <code>webpack.config.js</code></li>
+</ol>
+<p><strong>安装依赖</strong></p>
+<ol>
+<li>安装webpack   <code>npm install webpack -D</code></li>
+<li>webpack4以上需要 <code>npm install  webpack-cli -D</code></li>
+<li>编译TS  <code>npm install ts-loader -D</code></li>
+<li>TS环境 <code>npm install typescript -D</code></li>
+<li>热更新服务 <code>npm install  webpack-dev-server -D</code></li>
+<li>HTML模板 <code>npm install html-webpack-plugin -D</code></li>
+</ol>
+<p><strong>配置文件</strong></p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">&quot;name&quot;</span>: <span class="string">&quot;webpackTs&quot;</span>,</span><br><span class="line">  <span class="attr">&quot;version&quot;</span>: <span class="string">&quot;1.0.0&quot;</span>,</span><br><span class="line">  <span class="attr">&quot;description&quot;</span>: <span class="string">&quot;&quot;</span>,</span><br><span class="line">  <span class="attr">&quot;main&quot;</span>: <span class="string">&quot;index.js&quot;</span>,</span><br><span class="line">  <span class="attr">&quot;scripts&quot;</span>: &#123;</span><br><span class="line">    <span class="attr">&quot;test&quot;</span>: <span class="string">&quot;echo \&quot;Error: no test specified\&quot; &amp;&amp; exit 1&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;dev&quot;</span>: <span class="string">&quot;webpack-dev-server&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;build&quot;</span>: <span class="string">&quot;webpack&quot;</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">&quot;keywords&quot;</span>: [],</span><br><span class="line">  <span class="attr">&quot;author&quot;</span>: <span class="string">&quot;&quot;</span>,</span><br><span class="line">  <span class="attr">&quot;license&quot;</span>: <span class="string">&quot;ISC&quot;</span>,</span><br><span class="line">  <span class="attr">&quot;devDependencies&quot;</span>: &#123;</span><br><span class="line">    <span class="attr">&quot;html-webpack-plugin&quot;</span>: <span class="string">&quot;^5.5.3&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;ts-loader&quot;</span>: <span class="string">&quot;^9.4.4&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;typescript&quot;</span>: <span class="string">&quot;^5.1.6&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;webpack&quot;</span>: <span class="string">&quot;^5.88.2&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;webpack-cil&quot;</span>: <span class="string">&quot;0.0.1-security&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;webpack-cli&quot;</span>: <span class="string">&quot;^5.1.4&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;webpack-dev-server&quot;</span>: <span class="string">&quot;^4.15.1&quot;</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">&quot;dependencies&quot;</span>: &#123;&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//webpack.config.js</span></span><br><span class="line"><span class="keyword">const</span> path = <span class="built_in">require</span>(<span class="string">&#x27;path&#x27;</span>)</span><br><span class="line"><span class="keyword">const</span> htmlWebpackPlugin = <span class="built_in">require</span>(<span class="string">&#x27;html-webpack-plugin&#x27;</span>)</span><br><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">    <span class="attr">entry</span>: <span class="string">&quot;./src/index.ts&quot;</span>,<span class="comment">//入口</span></span><br><span class="line">    <span class="comment">//出口</span></span><br><span class="line">    <span class="attr">output</span>: &#123;</span><br><span class="line">        <span class="attr">path</span>: path.resolve(__dirname, <span class="string">&#x27;./dist&#x27;</span>),</span><br><span class="line">        <span class="attr">filename</span>: <span class="string">&quot;index.js&quot;</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">mode</span>: <span class="string">&quot;development&quot;</span>,</span><br><span class="line">    <span class="attr">stats</span>: <span class="string">&quot;none&quot;</span>,</span><br><span class="line">    <span class="comment">//配置文件引入</span></span><br><span class="line">    <span class="attr">resolve</span>: &#123;</span><br><span class="line">        <span class="attr">extensions</span>: [<span class="string">&#x27;.ts&#x27;</span>, <span class="string">&#x27;.js&#x27;</span>],</span><br><span class="line">        <span class="attr">alias</span>: &#123;</span><br><span class="line">            <span class="string">&#x27;@&#x27;</span>: path.resolve(__dirname, <span class="string">&#x27;./src&#x27;</span>)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="comment">//配置文件使用loader</span></span><br><span class="line">    <span class="attr">module</span>: &#123;</span><br><span class="line">        <span class="attr">rules</span>: [</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="attr">test</span>: <span class="regexp">/\.ts$/</span>,</span><br><span class="line">                use: <span class="string">&quot;ts-loader&quot;</span></span><br><span class="line">            &#125;</span><br><span class="line">        ]</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">devServer</span>: &#123;</span><br><span class="line">        <span class="attr">port</span>: <span class="number">1995</span>,</span><br><span class="line">        <span class="attr">proxy</span>: &#123;&#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="comment">//插件</span></span><br><span class="line">    <span class="attr">plugins</span>: [</span><br><span class="line">        <span class="keyword">new</span> htmlWebpackPlugin(&#123;</span><br><span class="line">            <span class="attr">template</span>: <span class="string">&quot;./public/index.html&quot;</span></span><br><span class="line">        &#125;)</span><br><span class="line">    ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="esbuild-swc-构建ts项目"><a href="#esbuild-swc-构建ts项目" class="headerlink" title="esbuild + swc 构建ts项目"></a>esbuild + swc 构建ts项目</h1><p>前端工具层出不穷，之前有常用的打包工具<code>webpack</code>，现在有了速度更快的<code>vite</code>。 vite的开发模式是<strong>基于esBuild编译的,打包又是基于rollup</strong>,启动项目是很快的。</p>
+<p><code>esbuild</code>为什么这么快<br>在esbuild的官方介绍中打包<code>threejs</code> 只需要0.37秒 无限接近于亚索的Q技能冷却时间可以说是很快了。</p>
+<p><code>esbuild</code>是<code>go</code>语言编写的并且是多线程执行,性能是js的好几十倍，所以很快。</p>
+<ul>
+<li>无需缓存即可实现基础打包</li>
+<li>支持 ES6 跟 CommonJS 模块</li>
+<li>支持ES 6 Tree Shaking</li>
+<li>体积小</li>
+<li>插件化</li>
+<li>其他</li>
+<li>内置支持编译 jsx</li>
+</ul>
+<p><strong>SWC</strong><br><code>SWC</code>则宣称其比<code>Babel</code>快<strong>20</strong>倍(四核情况下可以快<strong>70</strong>倍)</p>
+<p>wc是用<code>rust</code>写的，所实现的功能跟<code>babel</code>一样，es6语法转es5，但是速度比<code>babel</code>更快，前端基建工具使用rust的是越来越多了，未来可能还会有一个替代postCss的😂。<br>那如果把<code>esbuild + swc</code>结合起来构建那岂不是接近光速 我们来<code>try try</code></p>
+<p><strong>配置环境</strong></p>
+<ol>
+<li><code>npm init -y</code> 生成 <code>package.json</code></li>
+<li><code>tsc --init</code> 生成 <code>tsconfig.json</code></li>
+<li>创建 <code>config.js</code></li>
+<li>创建入口问题<code>/src/index.ts</code>文件和<code>public/index.html</code>文件</li>
+</ol>
+<p><strong>安装依赖</strong></p>
+<ol>
+<li>全局安装 <code>npm install @swc/core esbuild @swc/helpers</code></li>
+<li>安装nodeTs声明 <code>npm install --save-dev @types/node</code></li>
+</ol>
+<p>其中，<code>@swc/core</code> 是 swc 的核心包，用于编译 JavaScript 和 TypeScript 代码；esbuild 是一个快速的 JavaScript 和 TypeScript 构建工具；<code>@swc/helpers</code> 是 swc 的辅助包，用于转换 JSX 代码。</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//config.ts</span></span><br><span class="line"><span class="keyword">import</span> esbuild <span class="keyword">from</span> <span class="string">&#x27;esbuild&#x27;</span><span class="comment">//打包工具</span></span><br><span class="line"><span class="keyword">import</span> swc <span class="keyword">from</span> <span class="string">&#x27;@swc/core&#x27;</span><span class="comment">//类似于babel es6 转 es5</span></span><br><span class="line"><span class="keyword">import</span> fs <span class="keyword">from</span> <span class="string">&#x27;node:fs&#x27;</span></span><br><span class="line"><span class="keyword">await</span> esbuild.build(&#123;</span><br><span class="line">    <span class="attr">entryPoints</span>: [<span class="string">&#x27;./index.ts&#x27;</span>], <span class="comment">//入口文件</span></span><br><span class="line">    <span class="attr">bundle</span>: <span class="literal">true</span>, <span class="comment">//模块单独打包</span></span><br><span class="line">    <span class="attr">loader</span>: &#123;</span><br><span class="line">        <span class="string">&#x27;.js&#x27;</span>: <span class="string">&#x27;js&#x27;</span>,</span><br><span class="line">        <span class="string">&#x27;.ts&#x27;</span>: <span class="string">&#x27;ts&#x27;</span>,</span><br><span class="line">        <span class="string">&#x27;.jsx&#x27;</span>: <span class="string">&#x27;jsx&#x27;</span>,</span><br><span class="line">        <span class="string">&#x27;.tsx&#x27;</span>: <span class="string">&#x27;tsx&#x27;</span>,</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">treeShaking</span>:<span class="literal">true</span>,</span><br><span class="line">    <span class="attr">define</span>: &#123;</span><br><span class="line">       <span class="string">&#x27;process.env.NODE_ENV&#x27;</span>: <span class="string">&#x27;&quot;production&quot;&#x27;</span>,</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">plugins</span>: [</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="comment">//实现自定义loader</span></span><br><span class="line">            <span class="attr">name</span>: <span class="string">&quot;swc-loader&quot;</span>,</span><br><span class="line">            <span class="function"><span class="title">setup</span>(<span class="params">build</span>)</span> &#123;</span><br><span class="line">                build.onLoad(&#123; <span class="attr">filter</span>: <span class="regexp">/\.(js|ts|tsx|jsx)$/</span> &#125;, <span class="function">(<span class="params">args</span>) =&gt;</span> &#123;</span><br><span class="line">                   <span class="comment">// console.log(args);</span></span><br><span class="line">                    <span class="keyword">const</span> content = fs.readFileSync(args.path, <span class="string">&quot;utf-8&quot;</span>)</span><br><span class="line">                    <span class="keyword">const</span> &#123; code &#125; = swc.transformSync(content, &#123;</span><br><span class="line">                        <span class="attr">filename</span>: args.path</span><br><span class="line">                    &#125;)</span><br><span class="line">                    <span class="keyword">return</span> &#123;</span><br><span class="line">                        <span class="attr">contents</span>: code</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;)</span><br><span class="line">            &#125;,</span><br><span class="line">        &#125;</span><br><span class="line">    ],</span><br><span class="line">    <span class="attr">outdir</span>: <span class="string">&quot;dist&quot;</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<p><strong>测试demo</strong></p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> a:<span class="built_in">number</span> = <span class="number">1</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> b:<span class="built_in">string</span> = <span class="string">&#x27;ikun&#x27;</span></span><br><span class="line"><span class="keyword">let</span> x = <span class="number">1</span></span><br><span class="line"><span class="keyword">let</span> fn = <span class="function">() =&gt;</span> <span class="number">123</span></span><br><span class="line"><span class="built_in">console</span>.log(x,fn);</span><br></pre></td></tr></table></figure>
+
+<p><strong>转移之后的</strong></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">var</span> a = <span class="number">1</span>;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">var</span> b = <span class="string">&quot;ikun&quot;</span>;</span><br><span class="line"><span class="keyword">var</span> x = <span class="number">1</span>;</span><br><span class="line"><span class="keyword">var</span> fn = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="number">123</span>;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="built_in">console</span>.log(x, fn);</span><br></pre></td></tr></table></figure>
+
+<p>除了上述基本用法之外，swc 和 esbuild 还提供了许多高级用法，可以更好地满足我们的构建需求。</p>
+<p><strong>插件系统</strong></p>
+<p>swc 和 esbuild 都提供了插件系统，可以通过插件来扩展其功能。例如，swc 的插件可以用于优化代码，提高性能。esbuild 的插件则可以用于处理特定类型的文件，或自定义转换规则。</p>
+<p><strong>缓存系统</strong></p>
+<p>swc 和 esbuild 都提供了缓存系统，可以减少重复编译时间。当文件内容没有发生变化时，swc 和 esbuild 会从缓存中读取已编译的代码，以提高构建速度。</p>
+<p><strong>Watch 模式</strong></p>
+<p>swc 和 esbuild 都支持 Watch 模式，可以在文件发生变化时自动重新编译代码。Watch 模式可以减少手动运行构建命令的频率，提高开发效率。</p>
+<p><strong>自定义插件</strong></p>
+<p>最后，我们可以通过编写自定义插件来扩展 swc 和 esbuild 的功能。例如，可以编写一个插件来自动引入 CSS 文件，或者优化 JavaScript 代码。自定义插件可以根据实际需求进行编写，以更好地满足项目的构建需求。</p>
+<p><strong>结论</strong></p>
+<p>本文介绍了如何使用 swc 和 esbuild 来构建一个简单的 TypeScript 应用程序，并讨论了一些高级用法。swc 和 esbuild 都是现代前端构建工具中的代表，它们都提供了快速编译、代码压缩等功能，可以有效提高应用程序的性能。通过学习 swc 和 esbuild 的使用方法，我们可以更好地进行前端工程化开发，提高开发效率和代码质量。</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">haleLy</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://halely.github.io/2023/06/06/Rollup%E6%9E%84%E5%BB%BATS%E9%A1%B9%E7%9B%AE-webpack%E6%9E%84%E5%BB%BATS%E9%A1%B9%E7%9B%AE-esbuild-swc/">https://halely.github.io/2023/06/06/Rollup%E6%9E%84%E5%BB%BATS%E9%A1%B9%E7%9B%AE-webpack%E6%9E%84%E5%BB%BATS%E9%A1%B9%E7%9B%AE-esbuild-swc/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://halely.github.io" target="_blank">不练剑的温不胜</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/JavaScript/">JavaScript</a><a class="post-meta__tags" href="/tags/TypeScript/">TypeScript</a><a class="post-meta__tags" href="/tags/webPack/">webPack</a><a class="post-meta__tags" href="/tags/Rollup/">Rollup</a></div><div class="post_share"><div class="social-share" data-image="https://www.foodiesfeed.com/wp-content/uploads/2023/08/salmon-appetizers.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2023/07/25/%E5%9B%9B%E7%A7%8D%E5%B8%B8%E8%A7%81%E7%9A%84JS%E5%86%85%E5%AD%98%E6%B3%84%E6%BC%8F/"><img class="prev-cover" src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="https://www.foodiesfeed.com/wp-content/uploads/2023/06/vegan-curry-with-fresh-herbs.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">四种常见的JS内存泄漏</div></div></a></div><div class="next-post pull-right"><a href="/2023/06/02/TypeScrip-%E5%AD%A6%E4%B9%A0%EF%BC%88%E5%85%AB%EF%BC%89/"><img class="next-cover" src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="https://www.foodiesfeed.com/wp-content/uploads/2023/05/bowl-of-raspberries.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">TypeScrip-学习（八）</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span> 相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2023/08/22/TS-Rollup封装插件实践/" title="TS-Rollup封装插件实践"><img class="cover" src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="https://www.foodiesfeed.com/wp-content/uploads/2023/08/puffed-pastry-with-vegetables.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-08-22</div><div class="title">TS-Rollup封装插件实践</div></div></a></div><div><a href="/2023/08/24/TS进阶用法proxy-Reflect/" title="TS进阶用法proxy & Reflect"><img class="cover" src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="/img/still.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-08-24</div><div class="title">TS进阶用法proxy & Reflect</div></div></a></div><div><a href="/2023/04/20/TypeScrip-学习（一）/" title="TypeScrip 学习（一）"><img class="cover" src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="https://www.foodiesfeed.com/wp-content/uploads/2023/04/green-spring-salad-with-a-turquoise-background.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-04-20</div><div class="title">TypeScrip 学习（一）</div></div></a></div><div><a href="/2023/05/27/TypeScrip-学习（七）/" title="TypeScrip-学习（七）"><img class="cover" src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="https://www.foodiesfeed.com/wp-content/uploads/2021/05/fresh-coconut.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-05-27</div><div class="title">TypeScrip-学习（七）</div></div></a></div><div><a href="/2023/04/25/TypeScrip-学习（三）/" title="TypeScrip-学习（三）"><img class="cover" src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="https://www.foodiesfeed.com/wp-content/uploads/2023/04/summer-grapefruit-cocktail.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-04-25</div><div class="title">TypeScrip-学习（三）</div></div></a></div><div><a href="/2023/04/24/TypeScrip-学习（二）/" title="TypeScrip-学习（二）"><img class="cover" src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="https://www.foodiesfeed.com/wp-content/uploads/2022/11/tuna-poke-with-fresh-vegetables.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-04-24</div><div class="title">TypeScrip-学习（二）</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="/./img/avatar.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">haleLy</div><div class="author-info__description">个人博客</div></div><div class="card-info-data is-center"><div class="card-info-data-item"><a href="/archives/"><div class="headline">文章</div><div class="length-num">44</div></a></div><div class="card-info-data-item"><a href="/tags/"><div class="headline">标签</div><div class="length-num">15</div></a></div><div class="card-info-data-item"><a href="/categories/"><div class="headline">分类</div><div class="length-num">1</div></a></div></div><a class="button--animated" id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/halely"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/halely" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:1060610431@qq.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a><a class="social-icon" href="https://my.oschina.net/u/4151902" target="_blank" title="博客"><i class="fab fa-algolia"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn card-announcement-animation"></i><span>公告</span></div><div class="announcement_content">欢迎来到我的博客</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Rollup%E6%9E%84%E5%BB%BATS%E9%A1%B9%E7%9B%AE"><span class="toc-number">1.</span> <span class="toc-text">Rollup构建TS项目</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Webpack%E6%9E%84%E5%BB%BATS%E9%A1%B9%E7%9B%AE"><span class="toc-number">2.</span> <span class="toc-text">Webpack构建TS项目</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#esbuild-swc-%E6%9E%84%E5%BB%BAts%E9%A1%B9%E7%9B%AE"><span class="toc-number">3.</span> <span class="toc-text">esbuild + swc 构建ts项目</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2023/10/07/node%E4%BB%8B%E7%BB%8D/" title="node介绍"><img src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="/./img/bg.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="node介绍"/></a><div class="content"><a class="title" href="/2023/10/07/node%E4%BB%8B%E7%BB%8D/" title="node介绍">node介绍</a><time datetime="2023-10-07T03:01:34.000Z" title="发表于 2023-10-07 11:01:34">2023-10-07</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/08/30/vue%E6%90%AD%E5%BB%BA%E5%92%8C%E9%85%8D%E7%BD%AE/" title="vue搭建和配置"><img src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="/./img/bg.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="vue搭建和配置"/></a><div class="content"><a class="title" href="/2023/08/30/vue%E6%90%AD%E5%BB%BA%E5%92%8C%E9%85%8D%E7%BD%AE/" title="vue搭建和配置">vue搭建和配置</a><time datetime="2023-08-30T09:44:26.000Z" title="发表于 2023-08-30 17:44:26">2023-08-30</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/08/30/%E6%B5%8F%E8%A7%88%E5%99%A8%E8%BE%93%E5%85%A5url%E5%88%B0%E5%BA%95%E5%8F%91%E7%94%9F%E4%BA%86%E4%BB%80%E4%B9%88/" title="浏览器输入url到底发生了什么"><img src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="/./img/bg.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="浏览器输入url到底发生了什么"/></a><div class="content"><a class="title" href="/2023/08/30/%E6%B5%8F%E8%A7%88%E5%99%A8%E8%BE%93%E5%85%A5url%E5%88%B0%E5%BA%95%E5%8F%91%E7%94%9F%E4%BA%86%E4%BB%80%E4%B9%88/" title="浏览器输入url到底发生了什么">浏览器输入url到底发生了什么</a><time datetime="2023-08-30T06:20:27.000Z" title="发表于 2023-08-30 14:20:27">2023-08-30</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/08/28/Set%E5%92%8CMap-weakSet%E5%92%8CweakMap/" title="Set和Map &amp; weakSet和weakMap"><img src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="https://www.foodiesfeed.com/wp-content/uploads/2020/04/gin-and-tonic-cocktail-with-orange-and-thyme.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Set和Map &amp; weakSet和weakMap"/></a><div class="content"><a class="title" href="/2023/08/28/Set%E5%92%8CMap-weakSet%E5%92%8CweakMap/" title="Set和Map &amp; weakSet和weakMap">Set和Map &amp; weakSet和weakMap</a><time datetime="2023-08-28T07:03:45.000Z" title="发表于 2023-08-28 15:03:45">2023-08-28</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/08/28/TypeScript%E8%BF%9B%E9%98%B6/" title="TypeScript进阶"><img src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="/img/background/backdrop2.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="TypeScript进阶"/></a><div class="content"><a class="title" href="/2023/08/28/TypeScript%E8%BF%9B%E9%98%B6/" title="TypeScript进阶">TypeScript进阶</a><time datetime="2023-08-28T03:47:34.000Z" title="发表于 2023-08-28 11:47:34">2023-08-28</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2023 By haleLy</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">繁</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload/dist/lazyload.iife.min.js"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.js"></script><script>function panguFn () {
+  if (typeof pangu === 'object') pangu.autoSpacingPage()
+  else {
+    getScript('https://cdn.jsdelivr.net/npm/pangu/dist/browser/pangu.min.js')
+      .then(() => {
+        pangu.autoSpacingPage()
+      })
+  }
+}
+
+function panguInit () {
+  if (false){
+    GLOBAL_CONFIG_SITE.isPost && panguFn()
+  } else {
+    panguFn()
+  }
+}
+
+document.addEventListener('DOMContentLoaded', panguInit)</script><script>var preloader = {
+  endLoading: () => {
+    document.body.style.overflow = 'auto';
+    document.getElementById('loading-box').classList.add("loaded")
+  },
+  initLoading: () => {
+    document.body.style.overflow = '';
+    document.getElementById('loading-box').classList.remove("loaded")
+
+  }
+}
+window.addEventListener('load',preloader.endLoading())</script><div class="js-pjax"></div><div class="aplayer no-destroy" data-id="550994494" data-server="netease" data-type="playlist" data-fixed="true" data-mini="true" data-listFolded="false" data-order="list" data-preload="none" data-autoplay="false" muted></div><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = true;
+POWERMODE.mobile = false;
+document.body.addEventListener('input', POWERMODE);
+</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script><script src="https://cdn.jsdelivr.net/gh/metowolf/MetingJS@1.2/dist/Meting.min.js"></script><script src="https://cdn.jsdelivr.net/npm/pjax/pjax.min.js"></script><script>let pjaxSelectors = [
+  'title',
+  '#config-diff',
+  '#body-wrap',
+  '#rightside-config-hide',
+  '#rightside-config-show',
+  '.js-pjax'
+]
+
+if (false) {
+  pjaxSelectors.unshift('meta[property="og:image"]', 'meta[property="og:title"]', 'meta[property="og:url"]')
+}
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+
+  // removeEventListener scroll 
+  window.removeEventListener('scroll', window.tocScrollFn)
+  window.removeEventListener('scroll', scrollCollect)
+
+  typeof preloader === 'object' && preloader.initLoading()
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof chatBtnFn === 'function' && chatBtnFn()
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // Analytics
+  if (false) {
+    MtaH5.pgv()
+  }
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+
+  typeof preloader === 'object' && preloader.endLoading()
+})
+
+document.addEventListener('pjax:error', (e) => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/shizuku.model.json"},"display":{"position":"right","width":200,"height":400},"mobile":{"show":false},"react":{"opacity":0.7}});</script></body></html>
