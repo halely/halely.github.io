@@ -1,5 +1,5 @@
 ---
-title: TypeScrip 学习（一）
+title: TypeScrip 学习（一）环境配置和基本类型
 cover: 'https://www.foodiesfeed.com/wp-content/uploads/2023/04/green-spring-salad-with-a-turquoise-background.jpg'
 date: 2023-04-20 16:05:32
 tags:

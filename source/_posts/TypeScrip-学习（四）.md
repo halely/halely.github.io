@@ -1,5 +1,5 @@
 ---
-title: TypeScrip-学习（四）
+title: TypeScrip-学习（四）枚举 | Type | never | symbol
 date: 2023-04-26 16:37:00
 cover: https://www.foodiesfeed.com/wp-content/uploads/2023/04/female-farmer-holding-sign-board.jpg
 tags:

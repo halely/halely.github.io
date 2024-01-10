@@ -1,5 +1,5 @@
 ---
-title: TypeScrip-学习（七）
+title: TypeScrip-学习（七）命名空间、三斜线指令、声明文件、Mixins混入
 date: 2023-05-27 16:50:03
 cover: https://www.foodiesfeed.com/wp-content/uploads/2021/05/fresh-coconut.jpg
 tags:

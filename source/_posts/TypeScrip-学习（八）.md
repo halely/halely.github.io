@@ -1,5 +1,5 @@
 ---
-title: TypeScrip-学习（八）
+title: TypeScrip-学习（八）装饰器Decorator
 date: 2023-06-02 16:07:38
 cover: https://www.foodiesfeed.com/wp-content/uploads/2023/05/bowl-of-raspberries.jpg
 tags:

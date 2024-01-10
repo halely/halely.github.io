@@ -3,7 +3,7 @@ title: Set和Map & weakSet和weakMap
 date: 2023-08-28 15:03:45
 cover: https://www.foodiesfeed.com/wp-content/uploads/2020/04/gin-and-tonic-cocktail-with-orange-and-thyme.jpg
 tags:
- - Javascript
+ - JavaScript
 ---
 
 # 前言
