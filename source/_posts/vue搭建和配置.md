@@ -5,6 +5,8 @@ cover: https://www.foodiesfeed.com/wp-content/uploads/2023/09/can-of-fresh-soda.
 tags:
  - Vue
  - npm
+categories: 
+  - 前端学习
 ---
 
 # vue2

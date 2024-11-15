@@ -8,6 +8,8 @@ copyright_url: https://juejin.cn/post/7139718200177983524#comment
 copyright_info: 本文章来自稀土掘金
 tags:
   - JavaScript
+categories: 
+  - 前端学习
 ---
 
 # 前言

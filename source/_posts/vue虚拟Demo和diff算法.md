@@ -4,6 +4,8 @@ date: 2022-12-14 16:29:12
 cover: 'https://www.foodiesfeed.com/wp-content/uploads/2017/03/choosing-from-a-menu.jpg'
 tags:
   - Vue
+categories: 
+  - 前端学习
 ---
 
 # 虚拟DOM

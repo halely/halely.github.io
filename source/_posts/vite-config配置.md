@@ -5,6 +5,8 @@ cover: "http://p1.qhimg.com/bdm/0_0_100/t013c3def46b8910030.jpg"
 tags:
  - vite
  - JavaScript
+categories: 
+  - 前端学习
 ---
 
 # 前言

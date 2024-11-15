@@ -1,10 +1,12 @@
 ---
 title: TypeScrip-学习（三） Class类
-date: 2023-04-25 16:45:59
+date: 2023-04-23 16:45:59
 cover: https://www.foodiesfeed.com/wp-content/uploads/2023/04/summer-grapefruit-cocktail.jpg
 tags:
   - JavaScript
   - TypeScript
+categories: 
+  - 前端学习
 ---
 
 # Class类

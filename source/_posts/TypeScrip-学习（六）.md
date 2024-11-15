@@ -5,6 +5,8 @@ cover: https://www.foodiesfeed.com/wp-content/uploads/2023/04/vineyard-at-sunset
 tags:
   - JavaScript
   - TypeScript
+categories: 
+  - 前端学习
 ---
 
 学习TS必须要对TS的配置有一定了解

@@ -5,6 +5,8 @@ cover: https://www.foodiesfeed.com/wp-content/uploads/2023/08/shrimps-pad-thai.j
 tags:
   - JavaScript
   - TypeScript
+categories: 
+  - 前端学习
 ---
 
 # 前言

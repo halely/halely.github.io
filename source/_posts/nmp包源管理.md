@@ -4,6 +4,8 @@ date: 2022-09-20 17:29:09
 cover: https://w.wallhaven.cc/full/m3/wallhaven-m3zjx1.jpg
 tags:
  - npm
+categories: 
+  - 前端学习
 ---
 
 # 包管理

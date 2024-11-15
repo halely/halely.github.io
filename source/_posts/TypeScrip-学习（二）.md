@@ -1,10 +1,12 @@
 ---
 title: TypeScrip-学习（二）类型和内置对象
-date: 2023-04-24 15:45:51
+date: 2023-04-21 15:45:51
 cover: https://www.foodiesfeed.com/wp-content/uploads/2022/11/tuna-poke-with-fresh-vegetables.jpg
 tags:
   - JavaScript
   - TypeScript
+categories: 
+  - 前端学习
 ---
 
 # 前言

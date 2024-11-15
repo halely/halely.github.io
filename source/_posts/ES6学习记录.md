@@ -4,6 +4,8 @@ date: 2022-08-09 17:28:07
 cover: 'https://w.wallhaven.cc/full/zy/wallhaven-zygeko.jpg'
 tags:
  - JavaScript
+categories: 
+  - 前端学习
 ---
 
 # 前言

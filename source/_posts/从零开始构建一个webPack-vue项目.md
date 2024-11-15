@@ -5,6 +5,8 @@ cover: 'https://cdn2.zzzmh.cn/wallpaper/origin/c9d3deb2880411ebb6edd017c2d2eca2.
 tags: 
 - webpack
 - vue
+categories: 
+  - 前端学习
 ---
 # 前言
 为了加深我们对`webpack`的了解方便以后灵活运用`webpack`的技术,故以我们从零开始构建一个简单的`webpack-vue`项目.

@@ -3,6 +3,8 @@ title: JavaScript 内存空间详解
 date: 2023-05-16 10:43:51
 tags:
  - JavaScript
+categories: 
+  - 前端学习
 ---
 
 # 引入

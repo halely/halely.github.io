@@ -5,6 +5,8 @@ cover: '/img/still.jpg'
 tags:
   - JavaScript
   - TypeScript
+categories: 
+  - 前端学习
 ---
 
 # 前言

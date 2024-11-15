@@ -7,6 +7,8 @@ tags:
   - TypeScript
   - webPack
   - Rollup
+categories: 
+  - 前端学习
 ---
 
 # Rollup构建TS项目

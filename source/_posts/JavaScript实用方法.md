@@ -4,6 +4,8 @@ cover: 'https://w.wallhaven.cc/full/l3/wallhaven-l3xk6q.jpg'
 date: 2022-12-07 15:19:23
 tags:
   - JavaScript
+categories: 
+  - 前端学习
 ---
 
 # 前言

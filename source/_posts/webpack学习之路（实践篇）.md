@@ -5,6 +5,8 @@ cover: /img/webpackBG.png
 tags: 
   - webpack 
   - JavaScript
+categories: 
+  - 前端学习
 ---
 
 # 前言

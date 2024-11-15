@@ -1,10 +1,12 @@
 ---
 title: TypeScrip-学习（五）泛型
-date: 2023-04-27 11:20:00
+date: 2023-04-25 11:20:00
 cover: https://www.foodiesfeed.com/wp-content/uploads/2023/03/colorful-gummy-bears-in-boxes.jpg
 tags:
   - JavaScript
   - TypeScript
+categories: 
+  - 前端学习
 ---
 
 # 泛型

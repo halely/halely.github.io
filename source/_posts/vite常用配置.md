@@ -4,6 +4,8 @@ date: 2023-02-28 10:23:56
 cover: '/img/background/backdrop1.png'
 tags:
   - vite
+categories: 
+  - 前端学习
 ---
 
 # 前言

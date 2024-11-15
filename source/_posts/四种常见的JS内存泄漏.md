@@ -4,6 +4,8 @@ date: 2023-07-25 11:57:09
 cover: https://www.foodiesfeed.com/wp-content/uploads/2023/06/vegan-curry-with-fresh-herbs.jpg
 tags:
  - JavaScript
+categories: 
+  - 前端学习
 ---
 
 ### 1、意外的全局变量

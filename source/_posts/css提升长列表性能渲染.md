@@ -5,6 +5,8 @@ tags:
     - CSS
     - HTML
 cover: "https://www.foodiesfeed.com/wp-content/uploads/2023/03/jelly-beans-all-over-the-table.jpg"
+categories: 
+  - 前端学习
 ---
 
 # 前言

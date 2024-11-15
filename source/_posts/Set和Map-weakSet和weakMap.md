@@ -4,6 +4,8 @@ date: 2023-08-28 15:03:45
 cover: https://www.foodiesfeed.com/wp-content/uploads/2020/04/gin-and-tonic-cocktail-with-orange-and-thyme.jpg
 tags:
  - JavaScript
+categories: 
+  - 前端学习
 ---
 
 # 前言

@@ -5,6 +5,8 @@ cover: '/img/background/backdrop2.png'
 tags:
   - JavaScript
   - TypeScript
+categories: 
+  - 前端学习
 ---
 
 # 类型兼容
