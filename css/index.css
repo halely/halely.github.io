@@ -1366,8 +1366,6 @@ input::placeholder {
   background: url( https://pic1.zhimg.com/v2-3bf22bf334ab07281194947d8888fe05_r.jpg?source=1940ef5c);
   background-attachment: local;
   background-position: center;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
   background-size: cover;
   background-repeat: no-repeat;
 }
@@ -3236,8 +3234,6 @@ blockquote footer cite:before {
   position: relative;
   background-attachment: local;
   background-position: bottom;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
   background-size: cover;
 }
 #footer-wrap {
@@ -3266,8 +3262,6 @@ blockquote footer cite:before {
   width: 100%;
   background-color: #49b1f5;
   background-position: center center;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
   background-size: cover;
   background-repeat: no-repeat;
   -webkit-transition: all 0.5s;
