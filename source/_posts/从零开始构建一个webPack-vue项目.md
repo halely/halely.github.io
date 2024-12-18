@@ -1,7 +1,7 @@
 ---
 title: 从零开始构建一个webPack-vue项目
 date: 2023-11-15 13:49:35
-cover: 'https://cdn2.zzzmh.cn/wallpaper/origin/c9d3deb2880411ebb6edd017c2d2eca2.jpg/fhd?auth_key=1733328000-2e5684945cd96f15e41c2dbe594efe516e22fdf3-0-8835f1a51bc732711627ad46f06856be'
+cover: '../img/wallpaper/1.jpg'
 tags: 
 - webpack
 - vue
