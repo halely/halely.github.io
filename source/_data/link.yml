@@ -13,7 +13,10 @@
       link: https://butterfly.zhheo.com/docs/home.html
       avatar: https://d33wubrfki0l68.cloudfront.net/6657ba50e702d84afb32fe846bed54fba1a77add/827ae/logo.svg
       descr: 这个网站是通过一些基础的教程可以让你入门Butterfly魔改，也就是定制你自己的Butterfly主题
-
+    - name: Butterfly主题补充教程
+      link: https://www.fattymonkey.com/categories/%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2/
+      avatar: https://d33wubrfki0l68.cloudfront.net/6657ba50e702d84afb32fe846bed54fba1a77add/827ae/logo.svg
+      descr: 这个博客是是通过对Butterfly主题的一些补充教程
 - class_name: 网站
   class_desc: 值得推荐的网站
   link_list:
