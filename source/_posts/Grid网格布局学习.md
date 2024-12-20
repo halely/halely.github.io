@@ -1,7 +1,7 @@
 ---
 title: Grid网格布局学习
 date: 2022-07-05 11:57:50
-cover: "../img/street1.jpg"
+cover: "../img/street.jpg"
 tags:
  - CSS
 categories: 
