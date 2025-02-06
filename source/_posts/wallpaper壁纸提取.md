@@ -1,7 +1,7 @@
 ---
 title: wallpaper壁纸提取
 date: 2024-12-20 16:59:38
-cover:
+cover: 'https://images3.alphacoders.com/135/thumbbig-1350069.webp'
 tags:
    - Tools
 categories:
