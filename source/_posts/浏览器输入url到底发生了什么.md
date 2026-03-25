@@ -1,7 +1,7 @@
 ---
 title: 浏览器输入url到底发生了什么
 date: 2023-08-30 14:20:27
-cover: https://www.foodiesfeed.com/wp-content/uploads/2023/06/pouring-honey-on-pancakes.jpg
+cover: https://pub-aaa82e9851064d22b954c3ebbafc9ae6.r2.dev/legacy/webp/fresh-greens-tossed-in-a-vibrant-bowl-nh70oonG1idibN9ps5yQe.webp
 tags:
 ---
 
