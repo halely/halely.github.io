@@ -8,4 +8,4 @@ type: "music"
 <script src="https://cdn.jsdelivr.net/npm/meting@1.2/dist/Meting.min.js"></script>
 
 
-{% meting "7868005687" "tencent" "playlist" "theme:#555" "mutex:true" "listmaxheight:1000px" "preload:auto" %}
+{% meting "8480835290" "netease" "playlist" "theme:#555" "mutex:true" "listmaxheight:1000px" "preload:auto" %}
